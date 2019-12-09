@@ -203,3 +203,70 @@ class IconSlideAction extends ClosableSlideAction {
     );
   }
 }
+
+/// A basic slide action with an icon, a caption and a background color.
+class TextSlideAction extends ClosableSlideAction {
+  /// Creates a slide action with an icon, a [caption] if set and a
+  /// background color.
+  ///
+  /// The [closeOnTap] argument must not be null.
+  const TextSlideAction({
+    Key key,
+    this.caption,
+    Color color,
+    this.foregroundColor,
+    VoidCallback onTap,
+    bool closeOnTap = _kCloseOnTap,
+  })  : color = color ?? Colors.white,
+        super(
+          key: key,
+          color: color,
+          onTap: onTap,
+          closeOnTap: closeOnTap,
+        );
+
+  /// The caption below the icon.
+  final String caption;
+
+  /// The background color.
+  ///
+  /// Defaults to [Colors.white].
+  final Color color;
+
+  /// The color used for [icon] and [caption].
+  final Color foregroundColor;
+
+  @override
+  Widget buildAction(BuildContext context) {
+    final Color estimatedColor =
+        ThemeData.estimateBrightnessForColor(color) == Brightness.light
+            ? Colors.black
+            : Colors.white;
+
+    final List<Widget> widgets = [];
+
+    if (caption != null) {
+      widgets.add(
+        Flexible(
+          child: Text(
+            caption,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context)
+                .primaryTextTheme
+                .caption
+                .copyWith(color: foregroundColor ?? estimatedColor),
+          ),
+        ),
+      );
+    }
+
+    return Container(
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: widgets,
+        ),
+      ),
+    );
+  }
+}

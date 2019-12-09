@@ -134,36 +134,27 @@ class _MyHomePageState extends State<MyHomePage> {
           ? VerticalListItem(items[index])
           : HorizontalListItem(items[index]),
       actions: <Widget>[
-        IconSlideAction(
+        TextSlideAction(
           caption: 'Archive',
           color: Colors.blue,
-          icon: Icons.archive,
           onTap: () => _showSnackBar(context, 'Archive'),
         ),
-        IconSlideAction(
+        TextSlideAction(
           caption: 'Share',
           color: Colors.indigo,
-          icon: Icons.share,
           onTap: () => _showSnackBar(context, 'Share'),
         ),
       ],
       secondaryActions: <Widget>[
-        Container(
-          height: 800,
-          color: Colors.green,
-          child: Text('a'),
-        ),
-        IconSlideAction(
+        TextSlideAction(
           caption: 'More',
           color: Colors.grey.shade200,
-          icon: Icons.more_horiz,
           onTap: () => _showSnackBar(context, 'More'),
           closeOnTap: false,
         ),
-        IconSlideAction(
+        TextSlideAction(
           caption: 'Delete',
           color: Colors.red,
-          icon: Icons.delete,
           onTap: () => _showSnackBar(context, 'Delete'),
         ),
       ],
