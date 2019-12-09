@@ -204,9 +204,9 @@ class IconSlideAction extends ClosableSlideAction {
   }
 }
 
-/// A basic slide action with an icon, a caption and a background color.
+/// A basic slide action without an icon, a caption and a background color.
 class TextSlideAction extends ClosableSlideAction {
-  /// Creates a slide action with an icon, a [caption] if set and a
+  /// Creates a slide action without an icon, a [caption] if set and a
   /// background color.
   ///
   /// The [closeOnTap] argument must not be null.
